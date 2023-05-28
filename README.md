@@ -2,18 +2,21 @@
 
 ## users テーブル
 
-| Column              | Type   | Options     |
-| ------------------- | ------ | ----------- |
-| email               | string | null: false |
-| encrypted_password  | string | null: false |
-| nickname            | string | null: false |
-| family_name         | string | null: false |
-| name                | string | null: false |
-| furigana_family_name| string | null: false |
-| furigana_name       | string | null: false |
+| Column              | Type     | Options                   |
+| ------------------- | -------- | ------------------------- |
+| email               | string   | null: false, unique: true |
+| encrypted_password  | string   | null: false               |
+| nickname            | string   | null: false               |
+| family_name         | string   | null: false               |
+| name                | string   | null: false               |
+| furigana_family_name| string   | null: false               |
+| furigana_name       | string   | null: false               |
+| birthday_ad_id      | integer  | null: false               |
+| birthday_month_id   | integer  | null: false               |
+| birthday_date_id    | integer  | null: false               |
 
-has_many :items
-has_many :orders
+- has_many :items
+- has_many :orders
 
 
 ## items テーブル
@@ -22,39 +25,38 @@ has_many :orders
 | ------------------ | ---------- | ------------------------------ |
 | item_name          | string     | null: false                    |
 | description        | text       | null: false                    |
-| category           | string     | null: false                    |
-| condition          | string     | null: false                    |
-| shipping_charges   | string     | null: false                    |
-| shipping_area      | string     | null: false                    |
-| shipping_days      | string     | null: false                    |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| shipping_charge_id | integer    | null: false                    |
+| area_id            | integer    | null: false                    |
+| shipping_day_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
-has_one :order
-belongs_to :user
+- has_one :order
+- belongs_to :user
 
 ## orders テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
-| price   | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
-belongs_to :user
-belongs_to :item
-has_one :address
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
 ## address テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | post_code        | string     | null: false                    |
-| prefectures      | string     | null: false                    |
-| municipalities   | string     | null: false                    |
+| area_id          | integer    | null: false                    |
+| city             | string     | null: false                    |
 | street           | string     | null: false                    |
 | building_name    | string     |                                |
-| telephone_number | integer    | null: false                    |
-| order_id         | integer    | null: false, foreign_key: true |
+| phone_number     | string     | null: false                    |
+| order            | references | null: false, foreign_key: true |
 
-belongs_to :order
+- belongs_to :order
