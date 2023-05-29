@@ -9,8 +9,8 @@
 | nickname            | string   | null: false               |
 | family_name         | string   | null: false               |
 | name                | string   | null: false               |
-| furigana_family_name| string   | null: false               |
-| furigana_name       | string   | null: false               |
+| kana_family_name    | string   | null: false               |
+| kana_name           | string   | null: false               |
 | birthday            | date     | null: false               |
 
 - has_many :items
