@@ -11,9 +11,7 @@
 | name                | string   | null: false               |
 | furigana_family_name| string   | null: false               |
 | furigana_name       | string   | null: false               |
-| birthday_ad_id      | integer  | null: false               |
-| birthday_month_id   | integer  | null: false               |
-| birthday_date_id    | integer  | null: false               |
+| birthday            | date     | null: false               |
 
 - has_many :items
 - has_many :orders
