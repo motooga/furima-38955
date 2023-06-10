@@ -33,7 +33,6 @@ RSpec.describe User, type: :model do
         expect(another_user.errors.full_messages).to include 'Email has already been taken'
       end
 
-
       it 'パスワードが空では登録できない' do
         @user.password = ''
         @user.valid?
@@ -97,105 +96,101 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include "First name kana can't be blank"
       end
 
-
       it 'last_nameに半角が含まれていると登録できない' do
         @user.last_name = '山本 '
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name is invalid"
+        expect(@user.errors.full_messages).to include 'Last name is invalid'
       end
 
       it 'last_nameに英語が含まれていると登録できない' do
         @user.last_name = 'Ａ'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name is invalid"
+        expect(@user.errors.full_messages).to include 'Last name is invalid'
       end
-      
+
       it 'first_nameに半角が含まれていると登録できない' do
         @user.first_name = '山本 '
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name is invalid"
+        expect(@user.errors.full_messages).to include 'First name is invalid'
       end
 
       it 'first_nameに英語が含まれていると登録できない' do
         @user.first_name = 'Ａ'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name is invalid"
+        expect(@user.errors.full_messages).to include 'First name is invalid'
       end
 
       it 'last_name_kanaに半角が含まれていると登録できない' do
         @user.last_name_kana = 'ヤマモト '
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name kana is invalid"
+        expect(@user.errors.full_messages).to include 'Last name kana is invalid'
       end
 
       it 'last_name_kanaに英語が含まれていると登録できない' do
         @user.last_name_kana = 'Ａ'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name kana is invalid"
+        expect(@user.errors.full_messages).to include 'Last name kana is invalid'
       end
 
       it 'last_name_kanaに漢字が含まれていると登録できない' do
         @user.last_name_kana = '山本'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name kana is invalid"
+        expect(@user.errors.full_messages).to include 'Last name kana is invalid'
       end
 
       it 'last_name_kanaにひらがなが含まれていると登録できない' do
         @user.last_name_kana = 'やまもと'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name kana is invalid"
+        expect(@user.errors.full_messages).to include 'Last name kana is invalid'
       end
 
       it 'last_name_kanaに記号が含まれていると登録できない' do
-        @user.last_name_kana= '＠'
+        @user.last_name_kana = '＠'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name kana is invalid"
+        expect(@user.errors.full_messages).to include 'Last name kana is invalid'
       end
 
       it 'last_name kanaに数字が含まれていると登録できない' do
         @user.last_name_kana = '１'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Last name kana is invalid"
+        expect(@user.errors.full_messages).to include 'Last name kana is invalid'
       end
 
       it 'first_name_kanaに半角が含まれていると登録できない' do
         @user.first_name_kana = 'ヤマモト '
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name kana is invalid"
+        expect(@user.errors.full_messages).to include 'First name kana is invalid'
       end
 
       it 'first_name_kanaに英語が含まれていると登録できない' do
-        @user.first_name_kana= 'Ａ'
+        @user.first_name_kana = 'Ａ'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name kana is invalid"
+        expect(@user.errors.full_messages).to include 'First name kana is invalid'
       end
 
       it 'first_name_kanaに漢字が含まれていると登録できない' do
         @user.first_name_kana = '山本'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name kana is invalid"
+        expect(@user.errors.full_messages).to include 'First name kana is invalid'
       end
 
       it 'first_name_kanaにひらがなが含まれていると登録できない' do
         @user.first_name_kana = 'やまもと'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name kana is invalid"
+        expect(@user.errors.full_messages).to include 'First name kana is invalid'
       end
 
       it 'first_name_kanaに記号が含まれていると登録できない' do
-        @user.first_name_kana= '＠'
+        @user.first_name_kana = '＠'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name kana is invalid"
+        expect(@user.errors.full_messages).to include 'First name kana is invalid'
       end
 
       it 'first_name kanaに数字が含まれていると登録できない' do
         @user.first_name_kana = '１'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name kana is invalid"
+        expect(@user.errors.full_messages).to include 'First name kana is invalid'
       end
-
-
-
 
       it '誕生日が空では登録できない' do
         @user.birth_date = ''
