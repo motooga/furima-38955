@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "ユーザー管理機能", type: :system do
+RSpec.describe 'ユーザー管理機能', type: :system do
   before do
     driven_by(:selenium_chrome)
     @user = FactoryBot.build(:user)
@@ -8,7 +8,7 @@ RSpec.describe "ユーザー管理機能", type: :system do
 
   context 'ユーザー新規登録ができるとき' do
     it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
-      #トップページに移動する
+      # トップページに移動する
       visit root_path
       click_link '新規登録'
 
@@ -23,9 +23,9 @@ RSpec.describe "ユーザー管理機能", type: :system do
       fill_in 'user[first_name_kana]', with: @user.first_name_kana
       find('.select-box').click
       select '2000', from: 'user_bith_date_1i'
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change { User.count }.by(1)
+      end.to change { User.count }.by(1)
       sleep 1
 
       expect(current_path).to eq(root_path)
