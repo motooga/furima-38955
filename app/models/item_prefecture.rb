@@ -46,7 +46,7 @@ class ItemPrefecture < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :item_prefectures
+  has_many :items
 
 
 end

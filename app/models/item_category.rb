@@ -14,7 +14,7 @@ class ItemCategory < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :item_categorys
+  has_many :items
 
 
 end

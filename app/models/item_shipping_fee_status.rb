@@ -6,7 +6,7 @@ class ItemShippingFeeStatus < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :item_shipping_fee_statuses
+  has_many :items
 
 
 end

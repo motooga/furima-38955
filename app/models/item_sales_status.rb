@@ -10,7 +10,6 @@ class ItemSalesStatus < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :item_sales_statuses
-
+  has_many :items
 
 end
