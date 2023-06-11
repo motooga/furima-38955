@@ -11,9 +11,9 @@ belongs_to :item_prefecture
 belongs_to :item_scheduled_delivery
 belongs_to :item_shipping_fee_status
 
-validates :item_name, presence: true
-validates :item_info, presence: true
-validates :item_price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equel_to: 9999999 }
+validates :item_name, presence: true, length: { maximum: 40 }
+validates :item_info, presence: true, length: { maximum: 1000}
+validates :item_price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 validates :item_category_id, numericality: { other_than: 1 }
 validates :item_prefecture_id, numericality: { other_than: 1 }
 validates :item_sales_status_id, numericality: { other_than: 1 }
