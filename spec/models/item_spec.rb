@@ -97,6 +97,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Item price must be greater than or equal to 300')
       end
 
+      it '販売価格が全角だと登録できない' do
+        @item.item_price = "５００"
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Item price is not a number')
+      end
+
       it '販売価格が9999999以上だと登録できない' do
         @item.item_price = 9_999_999_999
         @item.valid?
