@@ -26,8 +26,10 @@ RSpec.describe Item, type: :model do
       end
 
       it '商品名が40文字以上だと登録できない' do
-        @item.item_name = Faker::Lorem.paragraph(sentence_count: 20)
-        @item.item_name = Faker::Lorem.paragraph(sentence_count: 20) while @item.item_name.length < 40
+        @item.item_name = Faker::Lorem.paragraph(sentence_count: 20) 
+          while @item.item_name.length < 40
+            @item.item_name = Faker::Lorem.paragraph(sentence_count: 20)
+          end
         @item.valid?
         expect(@item.errors.full_messages).to include('Item name is too long (maximum is 40 characters)')
       end
@@ -39,8 +41,10 @@ RSpec.describe Item, type: :model do
       end
 
       it '商品説明が1000文字以上だと登録できない' do
-        @item.item_info = Faker::Lorem.paragraph(sentence_count: 100)
-        @item.item_info = Faker::Lorem.paragraph(sentence_count: 100) while @item.item_info.length < 1000
+        @item.item_info  = Faker::Lorem.paragraph(sentence_count: 100)
+        while @item.item_info.length < 1000
+          @item.item_info = Faker::Lorem.paragraph(sentence_count: 100)
+        end        
         @item.valid?
         expect(@item.errors.full_messages).to include('Item info is too long (maximum is 1000 characters)')
       end
@@ -81,6 +85,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item price can't be blank")
       end
 
+      it '販売価格に小数点が含まれていると登録できない' do
+        @item.item_price = '300.50'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item price must be an integer")
+      end
+
       it '販売価格が300以下だと登録できない' do
         @item.item_price = 100
         @item.valid?
@@ -92,6 +102,14 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Item price must be less than or equal to 9999999')
       end
+
+      it 'userが紐づいていないと登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
+    
+      end
     end
+
   end
 end
