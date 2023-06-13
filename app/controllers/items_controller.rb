@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :move_to_sign_up, except: :index
-
   def index
   end
 
@@ -16,6 +15,8 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+
 
   private
 
