@@ -10,6 +10,5 @@ FactoryBot.define do
     password { Faker::Lorem.characters(number: 6, min_alpha: 1, min_numeric: 1) }
     password_confirmation { password }
     birth_date { Faker::Date.birthday(min_age: 18, max_age: 65) }
-    
   end
 end
