@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_sign_up, except: [:index, :show]
   before_action :set_item, except: [:index, :new, :create]
-  before_action :contributor_confirmation, only: [:edit, :update]
+  before_action :contributor_confirmation, only: [:edit, :update, :destroy]
  
 
   def index
@@ -23,11 +23,9 @@ class ItemsController < ApplicationController
   end
   
   def show
-    
   end
 
   def edit
-
   end
 
   def update
@@ -36,6 +34,13 @@ class ItemsController < ApplicationController
     else 
       render :edit
     end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
   end
 
 
