@@ -1,15 +1,16 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :contributor_confirmation
+  before_action :judge_sold
 
   def index
-    item_set
+    set_item
     @order_address = OrderAddress.new
   end
 
 
   def create
-    binding.pry
-    item_set
+    set_item
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_item
@@ -22,7 +23,7 @@ class OrdersController < ApplicationController
 
   private
 
-  def item_set
+  def set_item
     @item = Item.find(params[:item_id])
   end
 
@@ -38,4 +39,20 @@ class OrdersController < ApplicationController
       currency: 'jpy'            
     )
   end
+
+  def judge_sold
+    set_item
+    if
+    Order.exists?(item_id: @item.id)
+    redirect_to root_path
+    end
+  end
+
+  def contributor_confirmation
+    set_item
+    if current_user == @item.user
+    redirect_to root_path 
+    end
+  end
+
 end
