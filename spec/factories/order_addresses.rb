@@ -5,6 +5,10 @@ FactoryBot.define do
       city { '京都市' }
       street { '左京区河原町2-1' }
       building_name { 'ローレルコート203' }
-      phon_number { '09012345678' }
+      phone_number { '09012345678' }
+      token {"tok_abcdefghijk00000000000000000"}
+      association :item
+      association :user
+
   end
 end
