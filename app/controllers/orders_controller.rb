@@ -42,8 +42,7 @@ class OrdersController < ApplicationController
 
   def judge_sold
     set_item
-    if
-    Order.exists?(item_id: @item.id)
+    if Order.exists?(item_id: @item.id)
     redirect_to root_path
     end
   end
