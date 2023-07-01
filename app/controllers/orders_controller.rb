@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order_address).permit(:postal_code, :prefecture, :city, :street, :building_name, :phone_number).merge(item_id: @item.id, user_id: current_user.id, token: params[:token])
+    params.require(:order_address).permit(:postal_code, :item_prefecture_id, :city, :street, :building_name, :phone_number).merge(item_id: @item.id, user_id: current_user.id, token: params[:token])
   end
  
   def pay_item
