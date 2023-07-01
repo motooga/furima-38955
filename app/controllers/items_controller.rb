@@ -2,11 +2,10 @@ class ItemsController < ApplicationController
   before_action :move_to_sign_up, except: [:index, :show]
   before_action :set_item, except: [:index, :new, :create]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
- 
+  before_action :judge_sold, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.all.order(created_at: :desc)
-    # @order = Oder.find(params[:item_id])
   end
 
   def new
@@ -65,5 +64,13 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
   
+  def judge_sold
+    set_item
+    if
+    Order.exists?(item_id: @item.id)
+    redirect_to root_path
+    end
+  end
+
 end
 

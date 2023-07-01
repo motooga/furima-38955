@@ -50,7 +50,7 @@
 | Column                      | Type       | Options                        |
 | --------------------------- | ---------- | ------------------------------ |
 | postal_code                 | string     | null: false                    |
-| item_shipping_fee_status_id | integer    | null: false                    |
+| item_prefecture_id          | integer    | null: false                    |
 | city                        | string     | null: false                    |
 | street                      | string     | null: false                    |
 | building_name               | string     |                                |
