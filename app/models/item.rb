@@ -6,7 +6,6 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :item_category
-  belongs_to :item_category
   belongs_to :item_sales_status
   belongs_to :item_prefecture
   belongs_to :item_scheduled_delivery

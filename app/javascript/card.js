@@ -14,7 +14,6 @@ const pay = () => {
   submit.addEventListener("click", (e) => {
     e.preventDefault();
     payjp.createToken(numberElement).then(function (response) {
-      console.log(response);
       
       if (response.error) {
       } else {
