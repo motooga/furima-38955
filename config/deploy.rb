@@ -2,7 +2,7 @@
 lock "~> 3.17.3"
 
 set :application, "furima-38955"
-set :repo_url, "git@example.com:motooga/furima-38955.git"
+set :repo_url, "git@github.com:motooga/furima-38955.git"
 
 
 # Default branch is :master
