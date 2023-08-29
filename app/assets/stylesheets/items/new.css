@@ -89,6 +89,12 @@
   margin-bottom: 15px;
 }
 
+.image-delete-button {
+  text-align: center;
+  border: solid 1px;
+  cursor: pointer;
+}
+
 #previews img {
   width: 200px;
   margin: 10px;
