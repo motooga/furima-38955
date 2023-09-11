@@ -6,21 +6,18 @@
     <h2 class="name">
       <%= @item.item_name %>
     </h2>
-    <div class="item-img-content">
-      <%= image_tag @item.images[0] ,class:"item-box-img" %>
-      <div class="other-images">
-        <% @post.images[1..-1].each do |image| %>
-        <%div class="other-image" %>
-          <%= image_tag image %>
-        </div>
-        <%end%>
+
+      <div class="slider">
+        <% @item.images[0..-1].each do |image| %>
+        <%= image_tag image, class: "slider-img" %>
+        <% end %>
       </div>
+      
       <% if Order.exists?(item_id: @item.id) %>
         <div class="sold-out">
-        <span>Sold Out!!</span>
-      </div>
+         <span>Sold Out!!</span>
+        </div>
       <% end %>
-    </div>
     <div class="item-price-box">
       <span class="item-price">
         ¥ <%= @item.item_price.to_s(:dlimited) %>
